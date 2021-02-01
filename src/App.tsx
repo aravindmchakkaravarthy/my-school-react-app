@@ -9,6 +9,8 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
+
+          I can change and it will in my hosted aws site.
         </p>
         <a
           className="App-link"
