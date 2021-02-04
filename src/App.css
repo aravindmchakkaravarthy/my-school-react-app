@@ -1,3 +1,10 @@
+body{
+  height:100vh;
+}
+
+#root{
+  height:100%;
+}
 .App {
   text-align: center;
 }
@@ -6,6 +13,54 @@
   height: 40vmin;
   pointer-events: none;
 }
+
+.body {
+  height:100%;
+  margin:auto;
+  display: table;
+}
+
+.footer {
+  position:fixed;
+  bottom: 0px;
+  width:100%;
+  
+}
+
+.welcome-image{
+  width:370px;
+  height:550px;
+}
+
+.score{
+  border: 1px solid;
+  background-color: green;
+  height: 60px;
+  margin: 10px;
+  padding:10px;
+  /* padding: 17px 0px 0px 10px; */
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  float: right;
+  align-items: center;
+  display: flex;
+}
+
+.end-score{
+  border: 1px solid;
+  background-color: green;
+  height: 100px;
+  margin: 10px;
+  /* font-size: 1rem; */
+  font-weight: bold;
+  color: white;
+  align-items: center;
+  display: flex;
+  padding:10px
+}
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
