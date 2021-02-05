@@ -55,8 +55,7 @@ class App extends Component {
   }
 
   nextPlay = () => {
-    alert("in here");
-    let url = 'http://localhost:5000/play';
+    let url = 'http://myschoolapp-env.eba-3ujvyqcp.us-east-1.elasticbeanstalk.com/play';
     if(null != this.searchInput){
       this.searchInput?.focus();
     }
@@ -72,8 +71,6 @@ class App extends Component {
         } 
       })
   };
-  alert(requestOptions);
-  alert(requestOptions.body);
     fetch(url, requestOptions)
         .then(response => response.json())
         .then(data => {
@@ -94,13 +91,10 @@ class App extends Component {
           this.setState({backgroundColor: '#ff4b4b'});
         }
         setTimeout(()=>this.setState({backgroundColor: ''}), 200);
-        alert("in fetch then");
       }).catch(err => {
-        alert("in error");
+        alert("Some error happened. Please contact administrator");
         alert(err);
       });
-      alert("outside fetch then");
-      
         
   }
 
