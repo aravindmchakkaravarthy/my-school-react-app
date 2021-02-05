@@ -112,12 +112,7 @@ class App extends Component {
     this.setState({word:word})
   }
 
-  canBeSubmitted = () => {
-    let word = this.state.word;
-    if(word.spelling != ''){
-      this.nextPlay();
-    }
-  }
+  
 
   setPlayBack = () => {
     this.audioTag.playbackRate = 0.9;
@@ -128,23 +123,25 @@ class App extends Component {
     const {playStarted, word, currentScore, total, playComplete} = this.state;
     return (
       <>
-      <form action={this.nextPlay}>
+      
       <Header />
       <div className="body" style={{backgroundColor:this.state.backgroundColor}}>
-        {playComplete? <>
-          <div style={{fontSize:'2rem', margin:'20px'}}>
-            <span>Your score</span>
-            <div className="end-score"><div style={{margin:'auto'}}>{currentScore}/{total}</div></div>
-          
-          </div>
-        </>:<>
-          {playStarted ? 
-          <div style={{margin:'10px' }}>
-            <div className="score"><div style={{margin:'auto'}}>{currentScore}/{total}</div></div>
-            <audio ref={c => (this.audioTag = c)} onCanPlay={this.setPlayBack} style={{margin:'20px'}}src={word.url} autoPlay controls></audio>
-            <input autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" ref={c => (this.searchInput = c)} type="text" autoFocus={true} onBlur={this.canBeSubmitted} className="form-control" value={word.spelling} onChange={this.changeSpelling}/>
-          </div>: <img src={spellingBee} className="welcome-image"  />}
-        </>}
+        <form onSubmit={this.nextPlay}>
+          {playComplete? <>
+            <div style={{fontSize:'2rem', margin:'20px'}}>
+              <span>Your score</span>
+              <div className="end-score"><div style={{margin:'auto'}}>{currentScore}/{total}</div></div>
+            
+            </div>
+          </>:<>
+            {playStarted ? 
+            <div style={{margin:'10px' }}>
+              <div className="score"><div style={{margin:'auto'}}>{currentScore}/{total}</div></div>
+              <audio ref={c => (this.audioTag = c)} onCanPlay={this.setPlayBack} style={{margin:'20px'}}src={word.url} autoPlay controls></audio>
+              <input autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" ref={c => (this.searchInput = c)} type="text" autoFocus={true}  className="form-control" value={word.spelling} onChange={this.changeSpelling}/>
+            </div>: <img src={spellingBee} className="welcome-image"  />}
+          </>}
+        </form>
       </div>
       <div className="footer">
         <div className="navbar navbar-dark bg-dark box-shadow">
@@ -158,8 +155,9 @@ class App extends Component {
             </>}</>}
           </div>
         </div>
+        
       </div>
-      </form>
+      
     </>
     );
   }
