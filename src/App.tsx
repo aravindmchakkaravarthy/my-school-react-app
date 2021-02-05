@@ -73,6 +73,7 @@ class App extends Component {
       })
   };
   alert(requestOptions);
+  alert(requestOptions.body);
     fetch(url, requestOptions)
         .then(response => response.json())
         .then(data => {
