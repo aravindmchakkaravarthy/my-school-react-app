@@ -110,6 +110,13 @@ class App extends Component {
     this.setState({word:word})
   }
 
+  canBeSubmitted = () => {
+    let word = this.state.word;
+    if(word.spelling != ''){
+      this.nextPlay();
+    }
+  }
+
   render() {
     const {playStarted, word, currentScore, total, playComplete} = this.state;
     return (
@@ -127,7 +134,7 @@ class App extends Component {
           <div style={{margin:'10px' }}>
             <div className="score"><div style={{margin:'auto'}}>{currentScore}/{total}</div></div>
             <audio style={{margin:'20px'}}src={word.url} autoPlay controls></audio>
-            <input ref={c => (this.searchInput = c)} type="text" autoFocus={true} className="form-control" value={word.spelling} onChange={this.changeSpelling}/>
+            <input autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" ref={c => (this.searchInput = c)} type="text" autoFocus={true} onBlur={this.canBeSubmitted} className="form-control" value={word.spelling} onChange={this.changeSpelling}/>
           </div>: <img src={spellingBee} className="welcome-image"  />}
         </>}
       </div>
