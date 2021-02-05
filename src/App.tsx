@@ -128,6 +128,7 @@ class App extends Component {
     const {playStarted, word, currentScore, total, playComplete} = this.state;
     return (
       <>
+      <form action={this.nextPlay}>
       <Header />
       <div className="body" style={{backgroundColor:this.state.backgroundColor}}>
         {playComplete? <>
@@ -158,6 +159,7 @@ class App extends Component {
           </div>
         </div>
       </div>
+      </form>
     </>
     );
   }
