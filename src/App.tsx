@@ -1,8 +1,8 @@
-import React, {Component, useRef} from 'react';
+import React, {Component} from 'react';
 import './App.css';
 
 import { Header } from './components/header/header';
-import { Footer } from './components/footer/footer';
+
 import spellingBee from './spelling-bee.png';
 
 import {Button} from 'react-bootstrap';
@@ -126,7 +126,7 @@ class App extends Component {
       
       <Header />
       <div className="body" style={{backgroundColor:this.state.backgroundColor}}>
-        <form onSubmit={this.nextPlay}>
+        <form onSubmit={this.nextPlay} action="#">
           {playComplete? <>
             <div style={{fontSize:'2rem', margin:'20px'}}>
               <span>Your score</span>
