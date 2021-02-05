@@ -3,12 +3,7 @@ version: 0.2
 phases:
   install:
     commands:
-      # install node 14
-      - echo installing Node 14...
-      - curl -sL https://deb.nodesource.com/setup_14.x | bash -
-      - echo curl for nodejs complete
-      - apt install -y nodejs
-      - echo node installing complete
+      - echo no install commands
   pre_build:
     commands:
       # install dependencies
