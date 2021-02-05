@@ -11,6 +11,7 @@ import {Button} from 'react-bootstrap';
 
 class App extends Component {
 
+
   state = {
     playStarted: false,
     playComplete: false,
@@ -26,6 +27,8 @@ class App extends Component {
   }
 
   searchInput:any = null;
+
+  audioTag:any = null;
 
   componentDidMount(){
     
@@ -87,7 +90,6 @@ class App extends Component {
         if(data.result){
           this.setState({backgroundColor: 'lightgreen'});
         }else{
-          console.log("setting background color");
           this.setState({backgroundColor: '#ff4b4b'});
         }
         setTimeout(()=>this.setState({backgroundColor: ''}), 200);
@@ -117,6 +119,11 @@ class App extends Component {
     }
   }
 
+  setPlayBack = () => {
+    this.audioTag.playbackRate = 0.9;
+    console.log("Set audio play back to slow");
+  }
+
   render() {
     const {playStarted, word, currentScore, total, playComplete} = this.state;
     return (
@@ -133,7 +140,7 @@ class App extends Component {
           {playStarted ? 
           <div style={{margin:'10px' }}>
             <div className="score"><div style={{margin:'auto'}}>{currentScore}/{total}</div></div>
-            <audio style={{margin:'20px'}}src={word.url} autoPlay controls></audio>
+            <audio ref={c => (this.audioTag = c)} onCanPlay={this.setPlayBack} style={{margin:'20px'}}src={word.url} autoPlay controls></audio>
             <input autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" ref={c => (this.searchInput = c)} type="text" autoFocus={true} onBlur={this.canBeSubmitted} className="form-control" value={word.spelling} onChange={this.changeSpelling}/>
           </div>: <img src={spellingBee} className="welcome-image"  />}
         </>}
