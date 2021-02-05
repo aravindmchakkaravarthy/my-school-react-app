@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useRef} from 'react';
 import './App.css';
 
 import { Header } from './components/header/header';
@@ -6,6 +6,8 @@ import { Footer } from './components/footer/footer';
 import spellingBee from './spelling-bee.png';
 
 import {Button} from 'react-bootstrap';
+
+
 
 class App extends Component {
 
@@ -23,8 +25,10 @@ class App extends Component {
     backgroundColor: ''
   }
 
-  componentDidMount(){
+  searchInput:any = null;
 
+  componentDidMount(){
+    
   }
 
   startPlay =  () => {
@@ -51,8 +55,11 @@ class App extends Component {
   }
 
   nextPlay = () => {
+    alert("in here");
     let url = 'http://localhost:5000/play';
-    console.log(this.state.word);
+    if(null != this.searchInput){
+      this.searchInput?.focus();
+    }
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -65,6 +72,7 @@ class App extends Component {
         } 
       })
   };
+  alert(requestOptions);
     fetch(url, requestOptions)
         .then(response => response.json())
         .then(data => {
@@ -85,7 +93,10 @@ class App extends Component {
           this.setState({backgroundColor: '#ff4b4b'});
         }
         setTimeout(()=>this.setState({backgroundColor: ''}), 200);
+        alert("in fetch then");
       });
+      alert("outside fetch then");
+      
         
   }
 
@@ -118,7 +129,7 @@ class App extends Component {
           <div style={{margin:'10px' }}>
             <div className="score"><div style={{margin:'auto'}}>{currentScore}/{total}</div></div>
             <audio style={{margin:'20px'}}src={word.url} autoPlay controls></audio>
-            <input type="text" className="form-control" value={word.spelling} onChange={this.changeSpelling}/>
+            <input ref={c => (this.searchInput = c)} type="text" autoFocus={true} className="form-control" value={word.spelling} onChange={this.changeSpelling}/>
           </div>: <img src={spellingBee} className="welcome-image"  />}
         </>}
       </div>
