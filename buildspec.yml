@@ -5,7 +5,7 @@ phases:
     commands:
       # install node 14
       - echo installing Node 14...
-      - curl -sL https://deb.nodesource.com/setup_15.x | bash -
+      - curl -sL https://deb.nodesource.com/setup_14.x | bash -
       - echo curl for nodejs complete
       - apt install -y nodejs
       - echo node installing complete
