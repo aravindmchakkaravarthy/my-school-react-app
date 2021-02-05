@@ -94,6 +94,9 @@ class App extends Component {
         }
         setTimeout(()=>this.setState({backgroundColor: ''}), 200);
         alert("in fetch then");
+      }).catch(err => {
+        alert("in error");
+        alert(err);
       });
       alert("outside fetch then");
       
