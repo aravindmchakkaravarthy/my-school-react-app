@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useRef} from 'react';
 import './App.css';
 
 import { Header } from './components/header/header';
@@ -123,10 +123,9 @@ class App extends Component {
     const {playStarted, word, currentScore, total, playComplete} = this.state;
     return (
       <>
-      
       <Header />
       <div className="body" style={{backgroundColor:this.state.backgroundColor}}>
-        <form onSubmit={this.nextPlay} action="#">
+        <form onSubmit={this.nextPlay}>
           {playComplete? <>
             <div style={{fontSize:'2rem', margin:'20px'}}>
               <span>Your score</span>
