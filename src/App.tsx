@@ -97,7 +97,7 @@ class App extends Component {
         alert("Some error happened. Please contact administrator");
         alert(err);
       });
-        
+      return false;
   }
 
   
