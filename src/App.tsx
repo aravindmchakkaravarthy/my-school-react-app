@@ -125,7 +125,7 @@ class App extends Component {
       <>
       <Header />
       <div className="body" style={{backgroundColor:this.state.backgroundColor}}>
-        <form onSubmit={this.nextPlay}>
+        <form onSubmit={this.nextPlay} action="#">
           {playComplete? <>
             <div style={{fontSize:'2rem', margin:'20px'}}>
               <span>Your score</span>
